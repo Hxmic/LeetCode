@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div>
+    <h1>题目描述</h1>
+    <span>
+      Palindrome Number
+
+      Determine whether an integer is a palindrome. Do this without extra space.
+    </span>
+
+    <h2>Note:</h2>
+    <span>None</span>
+  </div>
+
+  <script type="text/javascript">
+    var isPalindrome = function(x) {
+      var xStr = x.toString();
+      var len = xStr.length;
+      var harfLen = (xStr % 2) === 0 ? len / 2 : (len - 1) / 2;
+      for (var i = 0; i < harfLen; i++) {
+        // charAt() 方法可返回指定位置的字符。
+        if (xStr.charAt(i) != xStr.charAt(len - i - 1))
+          return false;
+      }
+      return true;
+    };
+  </script>
+</body>
+
+</html>
