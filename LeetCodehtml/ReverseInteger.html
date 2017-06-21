@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div>
+    <h1>题目描述</h1>
+    <span>
+      Reverse digits of an integer.
+
+      Example1: x = 123, return 321
+      Example2: x = -123, return -321
+    </span>
+
+    <h2>Note:</h2>
+    <span>The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.</span>
+  </div>
+  <script type="text/javascript">
+    var reverse = function(x) {
+      if (x === 0) return 0;
+
+      var xAbs = x > 0 ? x : -x;
+      var y = 0;
+      while (xAbs >= 0) {
+        y = y * 10 + xAbs % 10;
+        xAbs = Math.floor(xAbs / 10);
+      }
+
+      if (y >= 2147483651) return y = 0;
+
+      return x > 0 ? y : -y;
+    }
+  </script>
+</body>
+
+</html>
