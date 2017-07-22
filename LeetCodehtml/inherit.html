@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--用于实现 b继承a-->
+		<script type="text/javascript">
+			function A (name){
+				this.name = name; 
+				this.sayHello = function (){
+					alert(this.name + " say hello")
+				}
+			}
+			
+			function B(name,id){
+				this.temp = A;
+				this.temp(name); //相当于new A（）；
+				delete this.temp;
+				this.id = id ;
+				this.checkId = function(ID){
+					alert(this.id == ID)
+				}
+			}
+		</script>
+		
+	</body>
+</html>
