@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			//创建cookie
+			function setCookie(name, value, expires, path, domain, secure) {
+				var cookieText = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+				if(expires instanceof Date) {
+					cookieText += '; expires=' + expires;
+				}
+				if(path) {
+					cookieText += '; expires=' + expires;
+				}
+				if(domain) {
+					cookieText += '; domain=' + domain;
+				}
+				if(secure) {
+					cookieText += '; secure';
+				}
+				document.cookie = cookieText;
+			}
+
+			//获取cookie
+			function getCookie(name) {
+				var cookieName = encodeURIComponent(name) + '=';
+				var cookieStart = document.cookie.indexOf(cookieName);
+				var cookieValue = null;
+				if(cookieStart > -1) {
+					var cookieEnd = document.cookie.indexOf(';', cookieStart);
+					if(cookieEnd == -1) {
+						cookieEnd = document.cookie.length;
+					}
+					cookieValue = decodeURIComponent(document.cookie.substring(cookieStart + cookieName.length, cookieEnd));
+				}
+				return cookieValue;
+			}
+			
+
+			//删除cookie
+			function unsetCookie(name) {
+				document.cookie = name + "= ; expires=" + new Date(0);
+			}
+		</script>
+
+		<!--<script type="text/javascript">
+			//js对cookie的操作
+			var cookie = {
+				//设置cookie方法
+				set: function(key, val, time) {
+					//获取当前时间
+					var date = new Date();
+					//将date设置为n天以后的时间
+					var expiresDays = time;
+					//格式化为cookie的识别时间
+					date.setTime(date.getTime() + expiresDays * 24 * 3600 * 1000);
+					//设置cookie
+					document.cookie = key + "=" + val + ";expres" = date.toGMTString();
+				},
+				//获取cookie方法
+				get: function(key) {
+
+					/*获取cookie参数*/
+
+					//获取cookie，并且获取cookie格式化，去掉空格字符
+					var getCookie = document.cookie.replace(/[]/g, "");
+
+					//将获得cookie以分号为标识，将cookie保存到arrCookie的数组中
+					var arrCookie = getCookie.split(";");
+
+					var tips;
+					//使用for循环查找查找cookie中的tips变量
+					for(var i = 0; i < arrCookie.length; i++) {
+						//将单条cookie用等号为标识，将单条cookie保存到arr数组
+						var arr = arrCookie[i].split("=");
+						//匹配变量名称，其中arr[0]是指的cookie名称，如果该条变量为tips则执行
+						//判断语句中的赋值操作
+						if(key == arr[0]) {
+							//将cookie的值赋给变量tips
+							tips = arr[1];
+							break;
+						}
+
+					}
+
+				},
+				delete: function(key) {
+					var date = new Date();
+					//将date设置为过去的时间
+					date.setTime(date.getTime() - 10000);
+					//设置cookie
+					document.cookie = key + "=v;expires = " + date.toGMTString();
+				}
+				return tips;
+			}
+		</script>-->
+	</body>
+
+</html>
