@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*方法一*/
+			
+			.news {
+				background-color: gray;
+				border: solid 1px black;
+			}
+			
+			.news img {
+				float: left;
+			}
+			
+			.news p {
+				float: right;
+			}
+			
+			.clear {
+				clear: both;
+			}
+			/*方法二*/
+			
+			.news {
+				background-color: gray;
+				border: solid 1px black;
+				overflow: hidden;
+				*zoom: 1;
+			}
+			
+			.news img {
+				float: left;
+			}
+			
+			.news p {
+				float: right;
+			}
+			/*方法三*/
+			
+			.news {
+				background-color: gray;
+				border: solid 1px black;
+			}
+			
+			.news img {
+				float: left;
+			}
+			
+			.news p {
+				float: right;
+			}
+			
+			.content {
+				clear: both;
+			}
+			/*方法四*/
+		</style>
+
+	</head>
+
+	<body>
+		<!--方法一：使用带clear属性的空元素-->
+		<!--在浮动元素后使用一个空元素如<div class="clear"></div>，并在CSS中赋予.clear{clear:both;}属性即可清理浮动。亦可使用<br class="clear" />或<hr class="clear" />来进行清理。-->
+		<div id="" class="news">
+			<img src="clear.gif" />
+
+			<p>内容</p>
+			<div class="clear"></div>
+		</div>
+		<!--方法二：使用CSS的overflow属性-->
+		<!--给浮动元素的容器添加overflow:hidden;或overflow:auto;可以清除浮动，另外在 IE6 中还需要触发 hasLayout ，例如为父元素设置容器宽高或设置 zoom:1。
+		在添加overflow属性后，浮动元素又回到了容器层，把容器高度撑起，达到了清理浮动的效果。-->
+		<div id="" class="news">
+			<img src="clear.gif" />
+
+			<p>内容</p>
+			<div class="clear"></div>
+		</div>
+		<!--方法三：使用邻接元素处理-->
+		<!--什么都不做，给浮动元素后面的元素添加clear属性。-->
+		<div id="" class="news">
+			<img src="clear.gif" />
+
+			<p>内容</p>
+			<div class="clear"></div>
+		</div>
+		
+		<!--方法四：使用CSS的:after伪元素-->
+		<!--结合 :after 伪元素（注意这不是伪类，而是伪元素，代表一个元素之后最近的元素）和 IEhack ，可以完美兼容当前主流的各大浏览器，这里的 IEhack 指的是触发 hasLayout。
+		给浮动元素的容器添加一个clearfix的class，然后给这个class添加一个:after伪元素实现元素末尾添加一个看不见的块元素（Block element）清理浮动。-->
+		<div id="" class="news clearfix">
+			<img src="clear.gif"/>
+			<p>内容</p>
+		</div>
+		
+	</body>
+
+</html>
