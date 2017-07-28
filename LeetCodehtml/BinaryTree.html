@@ -15,7 +15,7 @@
 			}
 			var strText = "";
 			var charecters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-			var len = charecters.leng;//数组的长度
+			var len = charecters.length;//数组的长度
 			var nodes = new Array();//创建一个临时数组，用于存放二叉树节点
 			
 			//循环创建二叉树节点存放到数组中
@@ -29,7 +29,7 @@
 			function Stack(){
 				//存放栈的数组
 				var stack = new Array();
-				//压栈
+				//入栈
 				this.push = function(o){
 					stack.push(o);
 				};
