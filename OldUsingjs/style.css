@@ -1,0 +1,9 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.thead tr th,.tbody tr td{
+	padding-left:30px ;
+}
+
