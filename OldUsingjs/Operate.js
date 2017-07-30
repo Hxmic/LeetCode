@@ -19,7 +19,7 @@ function deleteTest(obj){
 	var tr = obj.parentNode.parentNode;
 	var tbody = tr.parentNode;
 	tbody.removeChild(tr);
-	if(tbody.rows.length == 1){
+	/*if(tbody.rows.length == 1){ //删除整个tbody
 		tbody.parentNode.removeChild(tbody)
-	}
+	}*/
 }
