@@ -6,7 +6,7 @@
 		<title></title>
 		<script type="text/javascript" src="Operate.js">
 		</script>
-		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<link rel="stylesheet" type="text/css" href="style.css" />
 	</head>
 
 	<body>
@@ -16,10 +16,10 @@
 		</div>
 
 		<div id="" style="margin-top: 200px;">
-			<table class="table " >
-				
-				<thead class="thead">	
-					<tr>	
+			<table class="table ">
+
+				<thead class="thead">
+					<tr>
 						<th>编号</th>
 						<th>姓名</th>
 						<th>年龄</th>
@@ -29,7 +29,7 @@
 						<th>修改</th>
 					</tr>
 				</thead>
-				
+
 				<tbody class="tbody">
 					<tr>
 						<td>1</td>
@@ -38,13 +38,13 @@
 						<td>男</td>
 						<td>2013-09-9</td>
 						<td>
-							<button onclick="deleteTest()">删除</button>
+							 <a href="javascript:;" onclick='{if(confirm("确定要删除这个流程吗?")) {deleteTest(this); }else {}}'>删除</a>
 						</td>
 						<td>
 							<button onclick="updateTest()">修改</button>
 						</td>
 					</tr>
-					
+
 					<tr>
 						<td>2</td>
 						<td>李四</td>
@@ -52,13 +52,13 @@
 						<td>男</td>
 						<td>2013-02-9</td>
 						<td>
-							<button>删除</button>
+							 <a href="javascript:;" onclick='{if(confirm("确定要删除这个流程吗?")) {deleteTest(this); }else {}}'>删除</a>
 						</td>
 						<td>
-							<button>修改</button>
+							<button onclick="updateTest()">修改</button>
 						</td>
 					</tr>
-					
+
 					<tr>
 						<td>3</td>
 						<td>赵五</td>
@@ -66,13 +66,13 @@
 						<td>男</td>
 						<td>2006-09-9</td>
 						<td>
-							<button onclick="deleteTest()">删除</button>
+							 <a href="javascript:;" onclick='{if(confirm("确定要删除这个流程吗?")) {deleteTest(this); }else {}}'>删除</a>
 						</td>
 						<td>
 							<button onclick="updateTest()">修改</button>
 						</td>
 					</tr>
-					
+
 					<tr>
 						<td>4</td>
 						<td>小六</td>
@@ -80,15 +80,13 @@
 						<td>女</td>
 						<td>1996-09-9</td>
 						<td>
-							<button onclick="deleteTest()">删除</button>
+							 <a href="javascript:;" onclick='{if(confirm("确定要删除这个流程吗?")) {deleteTest(this); }else {}}'>删除</a>
 						</td>
 						<td>
 							<button onclick="updateTest()">修改</button>
 						</td>
 					</tr>
 				</tbody>
-				<!--数据显示部分 结束-->
-
 			</table>
 		</div>
 	</body>
