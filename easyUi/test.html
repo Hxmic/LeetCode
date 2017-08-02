@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>测试</title>
+		<link rel="stylesheet" type="text/css" href="css/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="css/themes/icon.css">
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+	</head>
+
+	<body>
+		
+<script type="text/javascript">
+	
+</script>
+		<h1>简单测试</h1>
+		<div id="dragDiv">
+			<!--用于显示datagrid-->
+			<table id="title">
+			</table>
+		</div>
+
+		<div id="tb">
+			<!--显示头部日期搜索-->
+			Date Form <input class="date" width="110px" /> To <input class="date" width="110px" />
+			<input id="comBox" type="text" />
+			<a href="#" id="so"></a>
+		</div>
+
+		<!--用于显示底部的一些icon-->
+		<div id="ft">
+			<a href="#" class="easyui-linkbutton" iconCls="icon-edit"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-save"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-search"></a>
+			<a href="#" class="easyui-linkbutton" iconCls="icon-cut"></a>
+		</div>
+		<script type="text/javascript">
+			$('.date').datebox({})
+			$('#so').linkbutton({
+				iconCls:'icon-search',
+			})
+			$('#comBox').combobox({
+				url:'box.json',
+				method: 'get',
+				valueField: 'value',
+				textField: 'text',
+				groupField:'group',
+			})
+
+			$('#dragDiv').css({
+				'margin-left': '25%'
+			})
+			$('#dragDiv').draggable({
+				handle: '#title'
+			})
+			$('#title').datagrid({
+				width: 650,
+				height: 300,
+				singleSelect: true,
+				url: 'datagrid_data1.json',
+				method: 'get',
+				title: '我的js测试',
+				pagination: true,
+				pageSize: 10,
+				pageList: [10, 20, 30, 100],
+				rownumbers: true,
+				toolbar: '#tb',
+				footer: '#ft',
+				columns: [
+					[{
+							field: 'itemid',
+							width: 80,
+							title: 'ITEM'
+						},
+						{
+							field: 'productid',
+							width: 100,
+							title: 'PRODUCTID'
+						},
+						{
+							field: 'listprice',
+							width: 80,
+							title: 'LISTPRICE'
+						},
+						{
+							field: 'unitcost',
+							width: 80,
+							title: 'COST'
+						},
+						{
+							field: 'attr1',
+							width: 250,
+							title: 'ATTRIBUTE'
+						},
+						{
+							field: 'status',
+							width: 60,
+							title: 'STATUS'
+						}
+					]
+				]
+			});
+
+			$(function() {
+				$('#title').datagrid().datagrid('load');
+			})
+		</script>
+
+	</body>
+
+</html>
