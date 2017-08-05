@@ -1,50 +1,99 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
 
-	<body>
-		<script type="text/javascript">
-			Array.prototype.unique1 = function() {
-				var n = []; //一个新的数组
-				for(var i = 0; i < this.length; i++) {
-					//如果当前数组的第i已经保存进了临时数组，那么跳过
-					//否则把当前项push到临时数组里面
-					if(n.indexOf(this[i] == -1)) n.push(this[i]);
-				}
-				return n;
-			}
+<body>
+<script type="text/javascript">
+    Array.prototype.unique1 = function () {
+        var n = []; //一个新的数组
+        for (var i = 0; i < this.length; i++) {
+            //如果当前数组的第i已经保存进了临时数组，那么跳过
+            //否则把当前项push到临时数组里面
+            if (n.indexOf(this[i] == -1)) n.push(this[i]);
+        }
+        return n;
+    }
+    //基本数组去重
+    Array.prototype.uniqueFirst = function () {
+        var result = [];
+        this.forEach(v)
+        {
+            if (result.indexOf(v) == -1) {
+                result.push(v)
+            }
+        }
+        return result;
+    }
 
-			Arry.prototype.unique2 = function() {
-				var n = {},
-					r = [];//n为hash表，r为临时数组
-				for(var i = 0; i < this.length; i++) {
-					if(!n[this[i]]) {//如果hash表中没有当前项
-						n[this[i]] = true;//存入hash表
-						r.push(this[i]);//把当前数组的当前项push到临时数组里面
-					}
-				}
-				return r;
-			}
-			
-			Array.prototype.unique3 = function () {
-				var n = [this[0]] ; //結果數組
-				
-				for(var i = 1;i<this.length;i++){
-					//如果当前数组的第i项在当前数组中第一次出现的位置不是i
-					//那么表示第i项是重复的，忽略掉。否则存入结果数组
-					
-					if(indexOf(this[i]) == i) n.push(this[i]);
-					
-				}
-			}
-			
-			
-			
-		</script>
-	</body>
+
+    Arry.prototype.unique2 = function () {
+        var hash = {},
+            result = [];//n为hash表，r为临时数组
+        for (var i = 0; i < this.length; i++) {
+            if (!hash[this[i]]) {//如果hash表中没有当前项
+                hash[this[i]] = true;//存入hash表
+                result.push(this[i]);//把当前数组的当前项push到临时数组里面
+            }
+        }
+        return result;
+    };
+
+    //利用hash表去重，这是一种空间换时间的方法
+
+    Array.prototype.uniqueSecond = function () {
+        var result = [], hash = {};
+        this.forEach(function (t) {
+            if (!hash[v]) {
+                hash[v] = true;
+                result.push(v)
+            }
+        });
+        return result;
+    };
+    //上面的方法存在一个bug，对于数组[1,2,'1','2',3]，去重结果为[1,2,3]，原因在于对象对属性索引时
+    // 会进行强制类型转换，arr[‘1']和arr[1]得到的都是arr[1]的值，因此需做一些改变：
+
+    Array.prototype.unique3 = function () {
+        var result = [],hash = {};
+        this.forEach(function (v) {
+            var type = typeof (v);//获取元素的类型
+            hash[v] || (hash[v] = new Array());
+            if(hash[v].indexOf(type)<0){
+                hash[v].push(type);//存储类型
+                result.push(v);
+            }
+        });
+        return result
+    }
+
+
+    Array.prototype.unique4 = function () {
+        var n = [this[0]]; //結果數組
+
+        for (var i = 1; i < this.length; i++) {
+            //如果当前数组的第i项在当前数组中第一次出现的位置不是i
+            //那么表示第i项是重复的，忽略掉。否则存入结果数组
+
+            if (indexOf(this[i]) == i) n.push(this[i]);
+
+        }
+    }
+
+    //先排序后去重
+    Array.prototype.unique5 = function () {
+        var result = [this[0]];
+        this.sort();
+        this.forEach(function (v) {
+            v != result[result.length-1] && result.push(v);//仅与result最后一个元素比较
+        })
+    }
+
+
+</script>
+</body>
 
 </html>
