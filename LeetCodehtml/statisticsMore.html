@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<p>判断一个字符串中出现次数最多的字符，统计这个次数</p>
+<p>统计一个含有几个字符，存入数组，统计每个字符出现的次数</p>
+<p>charAt方法返回指定索引位置处的字符，strObj.charAt(index)：
+    strObj(必选)。任意String对象或文字
+    index（必选）。想得到的字符的基于零的索引。有效值是0与字符串长度减1之间的值
+</p>
+
+<script>
+    var str = 'sasdfasdfasdfdfhgjsdfsdfs';
+    var json = {};//用于存放每个字符（多个字符仅存入一个，类似查重）
+
+    for(var i = 0;i<str.length;i++){
+        if(!json[str.charAt(i)]){
+            json[str.charAt(i)] = 1;
+        }else {
+            json[str.charAt(i)]++;
+        }
+        alert(json[str.charAt(i)]);
+    };
+    var iMax = 0;//记录出现的次数
+    var iIndex = "";//记录不重复的字符串
+    for(var i in json){
+        if(json[i]>iMax){
+            iMax = json[i];
+            iIndex = i;
+        }
+    }
+    alert('出现次数最多的是:'+iIndex+'出现'+iMax+'次');
+</script>
+
+</body>
+</html>
