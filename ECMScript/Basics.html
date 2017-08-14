@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //   1
+    var name = "zah";
+    while (true) {
+        var name = "obm";
+        console.log(name);//obm
+        break;
+    }
+    console.log(name);//obm
+
+    /*使用var两次输出都是obama，这是因为ES5只有全局作用域和函数作用域，没有块级作用域，
+    这带来很多不合理的场景。第一种场景就是你现在看到的内层变量覆盖外层变量。而let则实际上为
+    JavaScript新增了块级作用域。用它所声明的变量，只在let命令所在的代码块内有效。*/
+
+    let sex = "zqh";
+    while (true) {
+        let sex = "obm";
+        console.log(sex) //obm
+        break;
+    }
+    console.log(sex);//zqh
+
+    //   2
+    var a = [];
+    for (var i = 0; i < 10; i++) {
+        a[i] = function () {
+            console.log(i);
+        }
+    }
+    a[6]();//10
+
+    /*上面代码中，变量i是var声明的，在全局范围内都有效。所以每一次循环，
+    新的i值都会覆盖旧值，导致最后输出的是最后一轮的i的值。而使用let则不会出现这个问题。*/
+
+    var a = [];
+    for (let i = 0; i < 10; i++) {
+        a[i] = function () {
+            console.log(i);
+        };
+    }
+    a[6]();
+
+    //   3
+    /*querySelector和querySelectorAll的参数须是符合 css selector 的字符串。
+    不同的是querySelector返回的是一个对象，querySelectorAll返回的一个集合(NodeList)。*/
+    /*querySelectorAll 在文档内找全部符合选择器描述的节点包括Element本身
+    jQuery(element).find(selector) 在文档内找全部符合选择器描述的节点不包括Element本身*/
+    var clickBoxs = document.querySelectorAll('.clickBox');
+
+    for (var i = 0; i < clickBoxs.length; i++) {
+        clickBoxs[i].onclick = function () {
+            console.log(i);
+        }
+    }
+
+    /*我们本来希望的是点击不同的clickBox，显示不同的i，
+    但事实是无论我们点击哪个clickBox，输出的都是5。下面我们来看下，如何用闭包搞定它。*/
+
+    function iteratorFactory(i) {
+        var onclick = function () {
+            console.log(i);
+        }
+        return onclick;
+    }
+
+    var clickBox = document.querySelectorAll('.clickBox');
+    for (var i = 0; i < clickBoxs.length; i++) {
+        clickBoxs[i].onclick = iteratorFactory(i);
+    }
+
+    /*ES6提供了更接近传统语言的写法，引入了Class（类）这个概念。
+    新的class写法让对象原型的写法更加清晰、更像面向对象编程的语法，也更加通俗易懂。*/
+
+    class Animal {
+        constructor() {
+            this.type = 'animal';
+        }
+
+        says(say) {
+            console.log(this.type + 'says' + say);
+        }
+    }
+
+    let animal = new Animal()
+    animal.says('hello')//animal says hello
+
+    //es6的继承机制，实质是先创造父类的实例对象this（所以必须先调用super方法），然后再用
+    //子类的构造函数修改this
+    class Cat extends Animal {//继承
+        constructor() {
+            super();//指代父类的实例（即父类的this对象）子类在connstructor方法中调用super方法，否则新建实例报错
+            this.type = 'cat';
+        }
+    }
+
+    let cat = new Cat();
+    cat.says('hello')//cat says hello
+
+
+
+
+</script>
+<p></p>
+</body>
+</html>
