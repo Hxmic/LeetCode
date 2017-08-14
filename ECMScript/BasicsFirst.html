@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6</title>
+</head>
+<body>
+<p>ES是标准，js是实现</p>
+<script>
+    //let const
+
+    //数组赋值
+    var [a, b, c] = [1, 2, 3];
+    console.log("a:", a);
+    console.log("b:", b);
+    console.log("c:", c);
+
+    //c为数组
+    var [a, ...c] = [1, 2, 3];
+    console.log("a:", a);
+    console.log("c:", c);
+
+    //设置默认值
+    var [a, b, c = 'default', d = 'default'] = [1, 2, 3];
+    console.log("a:", a);
+    console.log("b:", b);
+    console.log("c:", c);
+    console.log("d:", d);
+
+    //变量的解构赋值
+    var obj = {
+        a: 1,
+        b: 2
+    }
+    let {a, b} = obj;//等同于 let {a:a,b:b} = obj;
+    //重新命名,原来的没有值
+    //let{a:A,b} = obj;
+    //console.log("A:",A);
+    console.log("a:", a);
+    console.log("b:", b);
+    //同时包含数组和对象
+    var obj = {
+        arr: [
+            'Yo.', {
+                a: 1,
+            }
+        ]
+    }
+    let {arr: [greet, {a}]} = obj;
+
+    console.log("greet:", greet);
+    console.log("a:", a);
+
+    //解构字符串
+    let [a, b, c] = 'Yo.'
+    console.log(a, b, c)
+
+    //数组解构后传入
+    //var arr = [1,2];
+    //无顺序应该如何传入,给其声明
+    var obj = {b: 2, a: 1};
+
+    function test([a, b]) {
+        console.log("a:", a);
+        console.log("b:", b);
+    }
+
+    test(arr)
+
+    //字符串新增加的方法
+    //判断是否包含Y
+    console.log('Yo'.includes('Y'));
+    //判断以什么开头,以什么结束endWith('o'),重复次数repeat（3）
+    console.log('Yo'.startsWith('Y'));
+
+
+    //模板字符串
+    let title = '野外',
+    let tpl = '
+        < div >
+            <span>${title}</span>
+        < /div>
+    ';
+    console.log(tpl);
+
+    //Symbol防止对象属性被重写
+    let a = Symbol();
+    let b = Symbol();
+    console.log(a===b);
+
+    //如下实例的引用
+    let name = Symmbol();
+    {
+        var person = {};
+        person[name] = 'Filed1';
+    }
+    {
+        person['name'] = 'file2';
+    }
+    console.log('person:',person);
+    //如下，重写成功的例子;局部中可以改掉，但是在全局中不能改掉，
+
+    {
+        var person = {};
+        person[name] = "field1";
+        console.log("person[name]",person[name]);
+    }
+    {
+        let name =Symbol();
+        person[name] = 'Filed2';
+        console.log("person[name]",person[name]);
+    }
+
+    console.log("person[name]",person[name]);//弹出的和第一个一样
+
+    var user = new Proxy({},{
+            get:function (obj,prop) {
+                switch (prop){
+                    case 'full_name':
+                        return obj.fname + ' '+obj.lname;
+                }
+            },
+            set:function (obj,prop) {
+
+            }
+    })
+    user.fname = 'Bob';
+    user.lname = 'Wood';
+    console.log("user.full_name",user.full_name);
+</script>
+</body>
+</html>
