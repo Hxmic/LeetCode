@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组合并</title>
+</head>
+<body>
+
+
+<script>
+
+    let a = [1, 2, 3, 4, 5];
+    let  b = [1, 3, 5, 7, 9];
+
+    function  union(a,b) {
+        let elem,equal;
+        let aLenth = a.length,bLenth = b.length;
+        for(let i = 0;i<aLenth;i++){
+            elem = a[i];
+            equal = false;
+            for(let j = 0;j<bLenth;j++){
+                if(elem == b[j]){
+                    console.log(b[j]);
+                    equal = true;
+                    break;
+                }
+            }
+            if(!equal){
+                b.push(elem)
+            }
+        }
+
+    }
+
+    union(a,b);
+    console.log(b);
+
+</script>
+
+</body>
+</html>

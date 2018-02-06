@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组合并排序</title>
+</head>
+<body>
+
+<script>
+    // 已知数组a和数组b中的数据元素按值非递减排列
+    // 归并a和b得到新的数组c，c的数据元素也按值非递减排列
+    let a = [3, 5, 8, 11];
+    let b = [2, 6, 8, 9, 11, 15, 20];
+
+    function mergeList(a,b) {
+        let c= [],aElem,bElem;
+        let [i,j,k,aLen,bLen] = [0,0,0,a.length,b.length];
+
+        while (i<aLen && j<bLen){
+
+            aElem = a[i];
+            bElem = b[j];
+
+
+
+            if(aElem<bElem){
+                c[k++] = aElem;
+                i++;
+            }else {
+                c[k++] = bElem;
+                j++;
+            }
+
+
+        }
+
+
+        while (i<aLen){
+            c[k++] = a[i++];
+        }
+
+        while (j<bLen){
+            c[k++] = b[j++];
+        }
+
+
+        return c;
+
+    }
+
+    var c = mergeList(a,b);
+    console.log(c);
+
+
+</script>
+
+</body>
+</html>
