@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <script type = "text/javascript">
+        var Node = function(newData){//创建节点对象
+            this.next = null;
+            this.data = null;
+            this.Init = function(){
+                this.data = newData;
+            };
+            this.Init();
+        }
+        //定义链表类
+        var List = function(){
+            this.head = null;
+            this.size = 0;
+            this.Init = function(){
+                this.head = null;
+                this.size = 0;
+            };
+            this.Init();
+            this.Insert = function(newData){//初始批量插入操作
+                this.size += 1;
+                var newNode = new Node(newData);
+                if(this.head == null){
+                    this.head = newNode;
+                    return;
+                }
+                var tempNode = this.head;
+                while(tempNode.next != null)
+                    tempNode = tempNode.next;//找到链表尾部
+                tempNode.next = newNode;//将新元素插入到链表尾部
+            };
+            this.GetData = function(pos){//查找操作
+                if(pos >= this.size || pos < 0)
+                    return null;
+                else{
+                    tempNode = this.head;
+                    for(i = 0;i < pos;i++)
+                        tempNode = tempNode.next; //找到所处位置
+                    return tempNode.data;
+                }
+            };
+            this.Remove = function(pos){//移除某一位置节点
+                if(pos >= this.size || pos < 0)
+                    return null;
+                this.size -= 1;
+                tempNode = this.head;
+                if(pos == 0){
+                    this.head = this.head.next;
+                    return this.head;
+                }
+                for(i = 0;i < pos - 1;i++){
+                    tempNode = tempNode.next;
+                }
+                tempNode.next = tempNode.next.next;
+                return tempNode.next;
+            };
+            this.InsertBefore=function(data,pos){//从某一位置前插入节点
+                if(pos>=this.size||pos<0)
+                    return null;
+                this.size+=1;
+                tempNode=this.head;
+                var newNode = new Node(data);//将数据创造节点
+                if(pos==0){
+                    newNode.next=tempNode;
+                    return newNode.next;
+                }
+                for(i=0;i<pos-1;i++){
+                    tempNode=tempNode.next;//找到插入的位置
+                }
+                newNode.next=tempNode.next;//插入操作
+                tempNode.next=newNode;
+                return newNode.next;
+            };
+            this.Print = function(){//输出
+                document.write("链表中元素: <br>");
+                tempNode = this.head;
+                while(tempNode != null){
+                    document.write(tempNode.data + " ");
+                    tempNode = tempNode.next;
+                }
+                document.write("<br>");
+            };
+        };
+        //运行测试:
+        var list = new List();
+        var array = new Array(1,2,3,4,5,6);
+        for(i = 0;i < array.length;i++){
+            list.Insert(array[i]);
+        }
+        list.Print();
+        document.write("查找操作下标为4的元素: <br>");
+        var data= list.GetData(4);
+        document.write(data+"<br>");
+        document.write("删除操作: <br>");
+        list.Remove(5);
+        list.Print();
+        document.write("插入操作: <br>");
+        list.InsertBefore(8,3);
+        list.Print();
+        document.write("链表大小: " + list.size);
+    </script>
+</head>
+<body>
+</body>
+</html>

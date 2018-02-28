@@ -8,6 +8,52 @@
     <title>日历</title>
 </head>
 <body>
+
+<div >
+
+    <style>
+
+        .bg-favicon {
+            width: 32px; height: 32px;
+            background: url('css_sprites.png') -313px -140px;
+        }
+
+
+        .bg-logo {
+            width: 216px; height: 58px;
+            background: url('css_sprites.png') -313px -10px;
+        }
+
+        .bg-main {
+            width: 260px; height: 283px;
+            background: url('css_sprites.png') -9px -9px;
+        }
+
+        .bg-logo_dark {
+            width: 210px; height: 32px;
+            background: url('css_sprites.png') -313px -88px;
+        }
+
+        .m{
+            margin: 12px;
+        }
+
+    </style>
+
+    <div class="bg-favicon m">
+    </div>
+
+    <div class="bg-logo_dark m">
+    </div>
+
+    <div class="bg-main m">
+    </div>
+
+    <div class="bg-logo m">
+    </div>
+
+</div>
+
 <script>
     function isLeap(year) {
         return year % 4 == 0 ? (year % 100 != 0 ? 1 : (year % 400 == 0 ? 1 : 0)) : 0;
