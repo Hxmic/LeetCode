@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--多列布局-->
+
+<style>
+
+    .left2{
+        width: 30%;
+        height: 100px;
+        background-color: green;
+        display: inline-block;
+    }
+    .right2{
+        width: 60%;
+        height: 100px;
+        background-color: red;
+        display: inline-block;
+    }
+
+</style>
+
+<div>
+    <h2>行内布局使用inline-block</h2>
+    <div class="left2">Left</div>
+    <div class="right2">Right</div>
+</div>
+<!--
+
+float 属性定义元素在哪个方向浮动。
+使用float设置元素浮动后，元素会脱离文档流，左右浮动，而浮动元素原所在位置由后续非浮动元素填充，
+若浮动元素与后续非浮动元素发生重叠，则浮动元素将覆盖非浮动元素。
+
+-->
+
+
+<style>
+    .left3{
+        width: 30%;
+        height: 100px;
+        float: left;
+        background-color: grey;
+    }
+    .right3{
+        width: 60%;
+        height: 100px;
+        float: left;
+        background-color: black;
+    }
+
+</style>
+
+<div>
+
+    <div class="left3">left</div>
+    <div class="right3">right</div>
+
+</div>
+
+</body>
+</html>
